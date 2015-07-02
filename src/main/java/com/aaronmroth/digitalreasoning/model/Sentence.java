@@ -25,7 +25,7 @@ public class Sentence implements XMLizable {
 	public String toXML() {
 		return createTag("sentence", 
 					createTag("raw_text", raw) +
-					createTag("token", tokens)
+					createTag("tokens", tokens)
 				);
 	}
 
