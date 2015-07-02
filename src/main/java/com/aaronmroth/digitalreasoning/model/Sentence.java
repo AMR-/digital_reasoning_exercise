@@ -15,17 +15,17 @@ public class Sentence implements XMLizable {
 	
 	public String raw;
 	
-	public List<Word> words = new ArrayList<Word>();
+	public List<Token> tokens = new ArrayList<Token>();
 	
-	public void addWord(Word word) {
-		words.add(word);
+	public void addToken(Token word) {
+		tokens.add(word);
 	}
 
 	@Override
 	public String toXML() {
 		return createTag("sentence", 
 					createTag("raw_text", raw) +
-					createTag("words", words)
+					createTag("token", tokens)
 				);
 	}
 
