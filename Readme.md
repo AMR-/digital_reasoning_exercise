@@ -9,7 +9,7 @@ The main class is com.aaronmroth.digitalreasoning.Main.java
 Assumptions
 -----------
 
-* There is not sophisiticated error handling.  The program may sometimes assume configuration parameters are set appropriately, and throw Runtime Errors otherwise
+* Configuration parameters are set appropriately (may throw Exceptions otherwise)
 * The total number of corpuses in a zip to process can be loaded into memory as a List of Strings (i.e. there is enough memory to store all text at one time)
 * All sentences end with either a period, question mark, or exclamation point, or one of those characters followed by a single or double quotation mark.  The only exception is end-of-file, which can also end a sentence.
 * All sentences begin with a capital letter or number
@@ -28,6 +28,7 @@ Limitations
 * Any time the assumptions are violated, the text will may parsed incorrectly.
 * If there would be an abbreviation or acronym that ended with a period in the middle of a sentence followed by a word that started with a capital letter such as "I" or a proper noun, it would mistakenly be treated as a sentence break.  (This situation does not arise in the training set but could arise in further texts.)
 * Abbreviations (that end with a period) at the end of a sentence become tokens without a period while abbreviations in the middle of a sentence become tokens that include the period.  Ultimately, I feel that the optimal case would be to include the period when included in the text since it communicates information about the word.  This is a limtiation to resolve.  At the same time, if there is an intent to parse acronyms and abbreviations, such parsing would need to account for the fact that many acronyms and abbreviations can be spelled with or without periods.  Whether the original did include periods or not may be relevant though, and maintaining that information would be desirable.
+* single-quotes on a word due to quotation vs single-quotes due to possession are not currently distinguished, both are included
 * The current method of finding named entities matches based on an existing list.  This method is costly to update and maintain, and is imprecise as well.  E.g. matches "Europe" but not "European" (it would also be improper to instruct the algorithm to assume that an elongation of a proper noun is also a proper noun)
 * If the source corpus or set of source corpuses are comprised of text that is larger than what can be stored in memory at a single time, the program will not be able to process it, and would need to be updated to accommodate such tasks.
 
