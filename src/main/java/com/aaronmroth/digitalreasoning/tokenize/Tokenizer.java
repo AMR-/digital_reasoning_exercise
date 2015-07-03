@@ -62,7 +62,7 @@ public class Tokenizer {
 		return sentence;
 	}
 	
-	/* <index, length> */
+	/* The map returned: <index of PN in sentence, length of PN> */ 
 	private static TreeMap<Integer, Integer> getProperNounLocations(String raw_sentence) {
 		TreeMap<Integer, Integer> map = new TreeMap<Integer, Integer>();
 		BigInteger locations = new BigInteger("0"); //tracks found PN's, 1 bit per char
