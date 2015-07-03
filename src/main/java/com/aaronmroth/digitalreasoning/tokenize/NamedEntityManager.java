@@ -3,9 +3,7 @@ package com.aaronmroth.digitalreasoning.tokenize;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.aaronmroth.digitalreasoning.utils.PropertiesManager;
 
@@ -19,7 +17,6 @@ public class NamedEntityManager {
 	private static NamedEntityManager instance;
 	
 	private List<String> properNouns = null;
-	private Map<String, Integer> properNounInfo = null;
 	
 	public static NamedEntityManager instance() {
         if (instance == null) {
@@ -33,23 +30,11 @@ public class NamedEntityManager {
     }
 	
 	public NamedEntityManager() {
-		populateProperNounInfo();
+		populateProperNounList();
 	}
 	
 	public List<String> getProperNounList() {
 		return properNouns;
-	}
-
-	public Map<String, Integer> getProperNounInfo() {
-		return properNounInfo;
-	}
-	
-	private void populateProperNounInfo() {
-		populateProperNounList();
-		properNounInfo = new HashMap<String, Integer>();
-		for (String properNoun : properNouns) {
-			properNounInfo.put(properNoun, properNoun.length());
-		}
 	}
 
 	private void populateProperNounList() {

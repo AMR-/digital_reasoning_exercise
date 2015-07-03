@@ -59,9 +59,8 @@ public class Tokenizer {
 	private static TreeMap<Integer, Integer> getProperNounLocations(String raw_sentence) {
 		TreeMap<Integer, Integer> map = new TreeMap<Integer, Integer>();
 		locations.set(new BigInteger("0")); //tracks found PN's, 1 bit per char
-		Map<String, Integer> properNounLengths = NamedEntityManager.instance().getProperNounInfo();
 		for (String properNoun : NamedEntityManager.instance().getProperNounList()) {
-			int properNounLength = properNounLengths.get(properNoun); //TODO remove?
+			int properNounLength = properNoun.length();
 			addAllOccurrences(map, properNoun, properNounLength, raw_sentence);
 		}
 		locations.set(null);
